@@ -6,8 +6,8 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Install system graphics dependencies for OpenCV
-RUN apt-get update && apt-get install -y libgl1 libglib2.0-0 && rm -rf /var/lib/apt/lists/*
+# NEW: Added 'git' so YOLO-World can download the CLIP language model
+RUN apt-get update && apt-get install -y libgl1 libglib2.0-0 git && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
